@@ -1,0 +1,47 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1f2328;
+  --muted: #59636e;
+  --accent: #3b6fd8;
+  font-family: system-ui, sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15181c;
+    --fg: #e6e8eb;
+    --muted: #9aa3ad;
+    --accent: #6f9bf0;
+  }
+}
+
+body {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0 16px 48px;
+  background: var(--bg);
+}
+
+header p {
+  color: var(--muted);
+}
+
+.chart svg {
+  width: 100%;
+  height: auto;
+}
+
+.chart .bars rect {
+  fill: var(--accent);
+}
+
+.chart .tick text {
+  fill: var(--muted);
+}
+
+.chart .domain,
+.chart .tick line {
+  stroke: var(--muted);
+}
