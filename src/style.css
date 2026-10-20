@@ -229,7 +229,7 @@ button.primary {
 
 .legend {
   display: flex;
-  gap: 16px;
+  gap: 4px 16px;
   color: var(--text-secondary);
 }
 
@@ -279,4 +279,178 @@ button.primary {
   height: 16px;
   margin-left: -1px;
   background: var(--text-primary);
+}
+
+/* Navigation */
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 0.875rem;
+}
+
+section.viz {
+  padding-top: 24px;
+  border-top: 1px solid var(--gridline);
+  margin-top: 40px;
+}
+
+/* Grundgesamtheit und Stichprobe */
+
+.stepper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 24px 0 16px;
+  list-style: none;
+}
+
+.stepper button[aria-current] {
+  border-color: var(--text-primary);
+  font-weight: 600;
+}
+
+.sp-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .sp-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.sp-panel h3 {
+  margin: 0 0 8px;
+}
+
+.sp-panel p {
+  margin: 0 0 16px;
+  font-size: 0.9375rem;
+}
+
+#sp-legend {
+  flex-wrap: wrap;
+  margin-top: 8px;
+  font-size: 0.875rem;
+}
+
+.person {
+  transition: fill 0.4s, stroke 0.4s;
+}
+
+.person.in {
+  fill: var(--text-secondary);
+}
+
+.person.out {
+  fill: var(--axis);
+}
+
+.person.invited {
+  fill: var(--surface);
+  stroke: var(--text-secondary);
+  stroke-width: 1.5;
+}
+
+.person.pro {
+  fill: var(--hit);
+}
+
+.person.contra {
+  fill: var(--miss);
+}
+
+.frame {
+  fill: none;
+  stroke: var(--text-muted);
+  stroke-width: 1;
+}
+
+.inner-frame {
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.inner-frame.visible {
+  opacity: 1;
+}
+
+.inner-frame .frame {
+  stroke: var(--text-primary);
+  stroke-dasharray: 4 3;
+}
+
+.frame-label {
+  font-size: 12px;
+  fill: var(--text-secondary);
+}
+
+.funnel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-size: 0.8125rem;
+}
+
+.funnel-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 3px;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.funnel-row.current .funnel-label {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.funnel-row.future {
+  opacity: 0.35;
+}
+
+.funnel-track {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--gridline);
+}
+
+.funnel-bar {
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--text-secondary);
+  transition: background 0.4s;
+}
+
+.funnel.attitude .funnel-bar {
+  background: var(--miss);
+}
+
+.funnel-pro {
+  height: 100%;
+  background: var(--hit);
+  transition: width 0.4s;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .person,
+  .inner-frame,
+  .funnel-bar,
+  .funnel-pro {
+    transition: none;
+  }
 }

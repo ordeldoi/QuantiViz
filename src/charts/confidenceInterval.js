@@ -37,8 +37,8 @@ const tickMs = 800;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const duration = reduceMotion ? 0 : 400;
 
-const fmt = new Intl.NumberFormat('de', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const pct = new Intl.NumberFormat('de', { style: 'percent', maximumFractionDigits: 0 });
+const fmt = new Intl.NumberFormat('de-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const pct = new Intl.NumberFormat('de-CH', { style: 'percent', maximumFractionDigits: 0 });
 
 /**
  * Simulation von Konfidenzintervallen für den Mittelwert μ.
