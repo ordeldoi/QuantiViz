@@ -8,12 +8,65 @@
   <body>
     <header>
       <h1>QuantiViz</h1>
-      <p>Datenvisualisierungen mit d3.js</p>
+      <p>Statistik sichtbar machen</p>
     </header>
     <main>
-      <section>
-        <h2>Beispiel: Balkendiagramm</h2>
-        <div id="bar-chart" class="chart"></div>
+      <section id="ci" class="viz">
+        <h2>Konfidenzintervalle</h2>
+        <p>
+          Ein Konfidenzintervall gibt einen Bereich plausibler Werte für einen unbekannten
+          Parameter an – hier den Mittelwert μ einer Population. Das Konfidenzniveau beschreibt,
+          wie oft das Verfahren bei wiederholten Stichproben ein Intervall liefert, das μ
+          tatsächlich enthält.
+        </p>
+        <p>
+          Wähle eine Verteilung, den Stichprobenumfang n und das Konfidenzniveau. Starte dann die
+          Simulation: Für jede Stichprobe wird ein t-Intervall berechnet.
+        </p>
+
+        <div class="controls">
+          <label>
+            Verteilung
+            <select id="ci-dist">
+              <option value="normal">Normalverteilung</option>
+              <option value="uniform">Gleichverteilung</option>
+              <option value="exponential">Exponentialverteilung</option>
+            </select>
+          </label>
+          <label>
+            <span>n = <output id="ci-n-value">5</output></span>
+            <input id="ci-n" type="range" min="3" max="30" step="1" value="5" />
+          </label>
+          <label>
+            <span>Konfidenzniveau = <output id="ci-level-value">95 %</output></span>
+            <input id="ci-level" type="range" min="0.5" max="0.99" step="0.01" value="0.95" />
+          </label>
+          <div class="buttons">
+            <button id="ci-start" class="primary" aria-pressed="false">Start</button>
+            <button id="ci-step">1 Stichprobe</button>
+            <button id="ci-reset">Zurücksetzen</button>
+          </div>
+        </div>
+
+        <div id="ci-chart" class="chart"></div>
+
+        <div class="summary">
+          <div class="legend">
+            <span><i class="swatch hit"></i>enthält μ</span>
+            <span><i class="swatch miss"></i>verfehlt μ</span>
+          </div>
+          <p id="ci-coverage-text" aria-live="polite"></p>
+          <div class="coverage-bar" aria-hidden="true">
+            <div id="ci-coverage-fill" class="fill"></div>
+            <div id="ci-coverage-target" class="target"></div>
+          </div>
+        </div>
+
+        <p class="credit">
+          Idee nach <a href="https://seeing-theory.brown.edu/">Seeing Theory</a> (Brown University)
+          und Kristoffer Magnussons
+          <a href="https://rpsychologist.com/d3/ci/">Visualisierung von Konfidenzintervallen</a>.
+        </p>
       </section>
     </main>
     <script type="module" src="/src/main.js"></script>
